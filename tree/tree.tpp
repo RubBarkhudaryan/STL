@@ -2,9 +2,9 @@
 
 # define TREE_TPP
 
-# include <iostream>
-# include "./queue.h"
+# include "../queue/queue.h"
 # include "./tree.h"
+# include <iostream>
 
 template <typename T>
 rub::Tree<T>::Tree(const T& val) : value(val)
@@ -33,10 +33,10 @@ void	rub::Tree<T>::remove_children(void)
 template <typename T>
 void	rub::Tree<T>::print(void) const
 {
-	rub::Queue<Tree<T> *>	q;
+	rub::queue<Tree<T> *>	q;
+	Tree<T>*				root;
 
-	Tree<T>*	root = (Tree<T>*) this;
-
+	root = (Tree<T>*) this;
 	q.push(root);
 	while (!q.empty())
 	{
