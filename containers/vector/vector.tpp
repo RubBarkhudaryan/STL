@@ -1,4 +1,4 @@
-#include "vector.h"
+#include "./vector.h"
 
 template <typename T>
 rub::vector<T>::vector() : _data(nullptr), _size(0), _capacity(0)
@@ -184,7 +184,7 @@ template <typename T>
 T&	rub::vector<T>::at(std::size_t index)
 {
 	if (index >= this->_size)
-		throw std::out_of_range("rub::vector::at() : index out of range.\n");
+		throw rub::exception("rub::vector::at() : index out of range.");
 	return (this->_data[index]);
 }
 
@@ -192,7 +192,7 @@ template <typename T>
 const T&	rub::vector<T>::at(std::size_t index) const
 {
 	if (index >= this->_size)
-		throw std::out_of_range("rub::vector::at() : index out of range.\n");
+		throw rub::exception("rub::vector::at() : index out of range.");
 	return (this->_data[index]);
 }
 
@@ -244,7 +244,7 @@ void	rub::vector<T>::push_back(const T& value)
 }
 
 template <typename T>
-void	rub::vector<T>::push_back(T&& value)
+void	rub::vector<T>::push_back(T&& value) noexcept
 {
 	if (this->_size == this->_capacity)
 	{

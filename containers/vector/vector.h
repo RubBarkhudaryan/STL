@@ -3,8 +3,8 @@
 # define VECTOR_H
 
 # include <initializer_list>
-# include <stdexcept>
 # include <iostream>
+# include "../exception/exception.h"
 
 namespace rub
 {
@@ -63,7 +63,7 @@ namespace rub
 
 			/*modifiers*/
 			void			push_back(const T& value);
-			void			push_back(T&& value);
+			void			push_back(T&& value) noexcept;
 			void			pop_front(void) noexcept;
 			void			pop_back(void) noexcept;
 			void			clear(void) noexcept;
