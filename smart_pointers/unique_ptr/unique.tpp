@@ -131,7 +131,15 @@ void	rub::unique_ptr<T, Deleter>::reset(T *ptr) noexcept
 	this->ptr = ptr;
 }
 
-/*-------UNIQUE POINTER FOR ARRAYS-------*/
+template<typename T, typename Deleter>
+void	rub::unique_ptr<T, Deleter>::swap(rub::unique_ptr<T, Deleter>& other) noexcept
+{
+	std::swap(this->ptr, other.ptr);
+	std::swap(this->del, other.del);
+}
+
+
+/*-------UNIQUE_PTR[]-------*/
 
 /*-------default_deleter[]-------*/
 template<typename T>
@@ -243,6 +251,13 @@ void	rub::unique_ptr<T[], Deleter>::reset(T *ptr) noexcept
 	if (this->ptr)
 		this->del(this->ptr);
 	this->ptr = ptr;
+}
+
+template<typename T, typename Deleter>
+void	rub::unique_ptr<T[], Deleter>::swap(rub::unique_ptr<T[], Deleter>& other) noexcept
+{
+	std::swap(this->ptr, other.ptr);
+	std::swap(this->del, other.del);
 }
 
 #endif //UNIQUE_TPP

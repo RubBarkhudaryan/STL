@@ -86,6 +86,7 @@ namespace rub
 			Deleter&		get_deleter(void) noexcept;
 			const Deleter&	get_deleter(void) const noexcept;
 			void			reset(T *ptr = nullptr) noexcept;
+			void			swap(rub::unique_ptr<T, Deleter>& other) noexcept;
 	};
 
 	template<typename T, typename Deleter>
@@ -149,6 +150,7 @@ namespace rub
 			Deleter&		get_deleter(void) noexcept;
 			const Deleter&	get_deleter(void) const noexcept;
 			void			reset(T *ptr = nullptr) noexcept;
+			void			swap(rub::unique_ptr<T[], Deleter>& other) noexcept;
 	};
 }
 
